@@ -1,14 +1,13 @@
 const Song = require("../models/songs");
 
 const index = (req, res) => {
-  Song.find({}),
-    (err, result) => {
-      if (err) {
-        res.status(400).json(err);
-      } else {
-        res.status(200).json(result);
-      }
-    };
+  Song.find({}, (err, result) => {
+    if (err) {
+      res.status(400).json(err);
+    } else {
+      res.status(200).json(result);
+    }
+  });
   return res;
 };
 
@@ -22,4 +21,21 @@ const createSong = (req, res) => {
     .catch(err => res.status(400).json("Error: " + err));
 };
 
-module.exports = { index, createSong };
+const update = async (req, res) => {
+  const { _id, song_name, artist, language, url } = req.body;
+
+  res = await Song.updateOne(
+    { _id: _id },
+    { song_name, artist, language, url },
+    (err, result) => {
+      if (err) {
+        res.status(400).json(err);
+      } else {
+        res.status(200).json(result);
+      }
+    }
+  ).catch(err => res.status(400).json(err));
+  return res;
+};
+
+module.exports = { index, createSong, update };
