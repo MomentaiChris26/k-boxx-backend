@@ -3,12 +3,12 @@ const app = express();
 require('dotenv').config()
 
 
-const PORT = process.env.PORT || 8888;
+const PORT = process.env.PORT || 5500;
 
 
 const dbConfig = { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true };
 
-mongoose.connect("http://localhost:5500/", dbConfig, (err) => {
+mongoose.connect(process.env.DB_URL_TEST, dbConfig, (err) => {
   if (err)
       console.error("Error ❌");
   else
