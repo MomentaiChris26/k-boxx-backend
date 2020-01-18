@@ -12,4 +12,14 @@ const index = (req, res) => {
   return res;
 };
 
-module.exports = { index };
+const createSong = (req, res) => {
+  const { song_name, artist, language, url } = req.body;
+
+  const newSong = new Song({ song_name, artist, language, url });
+  newSong
+    .save()
+    .then(() => res.status(201).json(`A new song has been added!`))
+    .catch(err => res.status(400).json("Error: " + err));
+};
+
+module.exports = { index, createSong };
