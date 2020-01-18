@@ -1,0 +1,13 @@
+{
+  "name": "k-boxx-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:MomentaiChris26/k-boxx-backend.git",
+  "author": "Chris Tri <christophertri90@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
+}
