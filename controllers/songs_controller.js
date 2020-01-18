@@ -30,8 +30,12 @@ const update = async (req, res) => {
     (err, result) => {
       if (err) {
         res.status(400).json(err);
-      } else {
+      }
+
+      if (result.n > 0) {
         res.status(200).json(result);
+      } else {
+        res.status(400).json(result);
       }
     }
   ).catch(err => res.status(400).json(err));

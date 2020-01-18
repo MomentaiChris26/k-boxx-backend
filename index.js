@@ -14,7 +14,7 @@ const dbConfig = {
   useUnifiedTopology: true
 };
 
-mongoose.connect(mongoURI, dbConfig, err => {
+mongoose.connect(process.env.DB_URL_TEST, dbConfig, err => {
   if (err) console.error("Error");
   else console.log("Connected to db");
 });
